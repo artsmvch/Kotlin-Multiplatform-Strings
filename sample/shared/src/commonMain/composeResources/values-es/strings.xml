@@ -1,0 +1,12 @@
+<resources>
+    <string name="hello_world">Hello World!</string>
+    <plurals name="clicked_n_times">
+        <item quantity="one">Clicked %1$d time</item>
+        <item quantity="other">Clicked %1$d times</item>
+    </plurals>
+    <string-array name="colors_array">
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+    </string-array>
+</resources>
