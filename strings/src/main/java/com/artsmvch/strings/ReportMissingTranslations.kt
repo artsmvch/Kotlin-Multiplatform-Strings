@@ -43,7 +43,7 @@ abstract class ReportMissingTranslations : DefaultTask() {
 
     @TaskAction
     fun action() {
-        val stringResourceContainers = StringResourcesLookup.findStringResources(
+        val stringResourceContainers = StringResourcesFinder.findStringResources(
             resourcesDir = resourcesDirectoryProperty.asFile.get(),
             supportedLangCodes = supportedLanguagesProperty.get()
         )

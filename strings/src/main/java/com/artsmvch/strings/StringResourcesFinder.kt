@@ -9,7 +9,7 @@ import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
 import java.util.regex.Pattern
 
-internal object StringResourcesLookup {
+internal object StringResourcesFinder {
     private const val VALUES_DIR_NAME = "values"
     private const val STRINGS_FILE_NAME = "strings.xml"
 
@@ -69,7 +69,7 @@ internal object StringResourcesLookup {
     }
 
     private fun parseSingular(node: Node): StringResource.Singular {
-        val value = node.text().let(StringResourcesLookup::processString)
+        val value = node.text().let(StringResourcesFinder::processString)
         val argTypes = getArgTypes(value)
         return StringResource.Singular(value, argTypes)
     }
@@ -99,7 +99,7 @@ internal object StringResourcesLookup {
         var argTypes: List<ArgType>? = null
         (node.value() as NodeList).forEach { childNode ->
             if (childNode is Node) {
-                val value = childNode.text().let(StringResourcesLookup::processString)
+                val value = childNode.text().let(StringResourcesFinder::processString)
                 when (childNode.attribute("quantity")) {
                     "zero" -> zero = value
                     "one" -> one = value
@@ -128,7 +128,7 @@ internal object StringResourcesLookup {
         val values = ArrayList<String>()
         (node.value() as NodeList).forEach { childNode ->
             if (childNode is Node) {
-                val value = childNode.text().let(StringResourcesLookup::processString)
+                val value = childNode.text().let(StringResourcesFinder::processString)
                 values.add(value)
             }
         }
